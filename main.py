@@ -17,7 +17,7 @@ def main():
     
     st.title("Wikipeida Search Engine")
     
-    OLLAMA_HOST = os.environ.get('OLLAMA_HOST', 'localhost')
+    OLLAMA_HOST = os.environ.get('OLLAMA_HOST', 'host.docker.internal')
     OLLAMA_PORT = os.environ.get('OLLAMA_PORT', '11434')
     OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'orca-mini')
     
