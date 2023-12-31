@@ -71,7 +71,7 @@ def main():
             if using_ai:
                 logging.info("Creating prompt")
                 model_name = 'orca-mini'
-                prompt = 'You are search engine. You are tasked to answer a question or query that will be given to you in a short paragraph or small set of instructions. Your answer will only be based on the 5 document given to you and nothing else. Even though sometimes it may be a query try to think in a way of question. Please keep your answer as short as possible without leaving important details.\n'
+                prompt = 'You are search engine. You are tasked to answer a question or query that will be given to you in a short paragraph or small set of instructions. Your answer will only be based on the 5 document given to you and nothing else. Even though sometimes it may be a query try to think in a way of question. Please keep your answer as short as possible like 1 paragraph without leaving important details.\n'
                 prompt += 'The question/query is:\n\n'
                 prompt += f'"{user_input}"\n\n'
                 prompt += f'Here are the 5 documents that you can use to answer the question/query:\n\n'
@@ -96,7 +96,7 @@ def main():
             url = documents_df['url'][document_index]
             summary = documents_df['text'][document_index]
             st.write("[{}]({})\n[{}]({})".format(title, url, url, url))
-            st.write("**Summary:**\n{}\n".format(summary[:500]))
+            st.write("**Summary:**\n{}\n".format(summary[:250]))
             st.write(' ')
             st.write(' ')
         
