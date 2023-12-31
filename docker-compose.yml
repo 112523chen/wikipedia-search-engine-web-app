@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  search-engine:
+    image: search-engine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1234:8501"
+    environment:
+      - OLLAMA_HOST=ollama
+      - OLLAMA_PORT=11434
+      - OLLAMA_MODEL=llama2
+
+  ollama:
+    image: ollama/ollama
+    ports:
+      - 12345:11434
+    volumes:
+      - ~/.ollama:/root/.ollama
