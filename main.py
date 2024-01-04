@@ -57,12 +57,12 @@ def main():
             logging.info("Calculated similarity")
         
             logging.info("Collecting documents")
-            df = pd.read_parquet('prod.parquet', columns=['title', 'text', 'url', 'summary'])
+            df = pd.read_parquet('prod.parquet', columns=['title', 'url', 'summary'])
             documents_data = [] 
             for i, s in top_10:
-                data = [df['title'][i], df['text'][i], df['url'][i], df['summary'][i]]
+                data = [df['title'][i], df['url'][i], df['summary'][i]]
                 documents_data.append(data)
-            documents_df = pd.DataFrame(documents_data, columns=['title', 'text', 'url', 'summary'])
+            documents_df = pd.DataFrame(documents_data, columns=['title', 'url', 'summary'])
             if documents_df.duplicated(subset=['url']).sum() > 1:
                 documents_df.drop_duplicates(subset=['url'], inplace=True)
                 documents_df.reset_index(drop=True, inplace=True)
@@ -94,7 +94,7 @@ def main():
         for document_index in range(5 if documents_df.shape[0] > 5 else documents_df.shape[0]):
             title = documents_df['title'][document_index]
             url = documents_df['url'][document_index]
-            summary = documents_df['text'][document_index]
+            summary = documents_df['summary'][document_index]
             st.write("[{}]({})\n[{}]({})".format(title, url, url, url))
             st.write("**Summary:**\n{}\n".format(summary[:250]))
             st.write(' ')
